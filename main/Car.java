@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.*;
 
 public class Car {
@@ -9,6 +11,12 @@ public class Car {
     public String modelName; // The car model name
 
 
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+    }
 
 
     public int getNrDoors() {
