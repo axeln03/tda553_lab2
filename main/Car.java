@@ -4,11 +4,11 @@ import java.awt.*;
 
 public class Car {
 
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
+    private public int nrDoors; // Number of doors on the car
+    private public double enginePower; // Engine power of the car
+    private public double currentSpeed; // The current speed of the car
+    private public Color color; // Color of the car
+    private public String modelName; // The car model name
 
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
@@ -16,8 +16,8 @@ public class Car {
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        stopEngine();
     }
-
 
     public int getNrDoors() {
         return nrDoors;
