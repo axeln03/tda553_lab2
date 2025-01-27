@@ -2,13 +2,14 @@ package main;
 
 import java.awt.*;
 
-public class Car {
+public class Car implements Movable {
 
-    private public int nrDoors; // Number of doors on the car
-    private public double enginePower; // Engine power of the car
-    private public double currentSpeed; // The current speed of the car
-    private public Color color; // Color of the car
-    private public String modelName; // The car model name
+    private final  int nrDoors; // Number of doors on the car
+    private final  double enginePower; // Engine power of the car
+    private  final String modelName;
+    private  double currentSpeed; // The current speed of the car
+    private  Color color; // Color of the car
+     // The car model name
 
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
@@ -41,4 +42,6 @@ public class Car {
     public void stopEngine(){
         currentSpeed = 0;
     }
+
+    public abstract double speedFactor(){}
 }
