@@ -25,6 +25,8 @@ public abstract class Car {
         stopEngine();
     }
 
+    // Constants used for switch statsments later in the code
+    // Each car is facing RIGHT after the constructor has created the car
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
@@ -49,6 +51,14 @@ public abstract class Car {
         return currentSpeed;
     }
 
+    public double setCurrentSpeed(double newSpeed) {
+        currentSpeed = newSpeed;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -69,16 +79,14 @@ public abstract class Car {
 
     public void incrementSpeed(double amount) {
         double currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        setCurrentSpeed(currentSpeed);
     }
 
     public void decrementSpeed(double amount) {
         double currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        setCurrentSpeed(currentSpeed);
     }
 
-
-    public String getModelName() {
-        return modelName;
-    }
 
     // TODO fix this method according to lab pm
     public void gas(double amount) {
