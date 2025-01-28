@@ -9,8 +9,8 @@ public abstract class Car {
     private final String modelName; // The car model name
     private double currentSpeed; // The current speed of the car
     private Color color;// Color of the car
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private Direction direction;
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
@@ -25,8 +25,18 @@ public abstract class Car {
         stopEngine();
     }
 
+    // Constants used for switch statsments later in the code
+    // Each car is facing RIGHT after the constructor has created the car
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
     public int getNrDoors() {
@@ -39,6 +49,14 @@ public abstract class Car {
 
     public double getCurrentSpeed() {
         return currentSpeed;
+    }
+
+    public void setCurrentSpeed(double newSpeed) {
+        currentSpeed = newSpeed;
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public Color getColor() {
@@ -61,26 +79,36 @@ public abstract class Car {
 
     public void incrementSpeed(double amount) {
         double currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        setCurrentSpeed(currentSpeed);
     }
 
     public void decrementSpeed(double amount) {
         double currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        setCurrentSpeed(currentSpeed);
     }
 
-
-    public String getModelName() {
-        return modelName;
-    }
 
     // TODO fix this method according to lab pm
     public void gas(double amount) {
-        incrementSpeed(amount);
+        if(amount >= 0 && amount <= 1){
+            incrementSpeed(amount);
+        }
+        else{
+            throw new IllegalArgumentException("amount out of range 0 to 1");
+        }
     }
 
 
     // TODO fix this method according to lab pm
     public void brake(double amount) {
-        decrementSpeed(amount);
+
+        if(amount >= 0 && amount <= 1){
+            decrementSpeed(amount);
+        }
+        else{
+            throw new IllegalArgumentException("amount out of range 0 to 1");
+        }
+        
     }
 
     public Direction getDirection() {
