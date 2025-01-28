@@ -51,7 +51,7 @@ public abstract class Car {
         return currentSpeed;
     }
 
-    public double setCurrentSpeed(double newSpeed) {
+    public void setCurrentSpeed(double newSpeed) {
         currentSpeed = newSpeed;
     }
 
@@ -94,7 +94,7 @@ public abstract class Car {
             incrementSpeed(amount);
         }
         else{
-            throw new IllegalArgumentException("amount out of range 0 to 1")
+            throw new IllegalArgumentException("amount out of range 0 to 1");
         }
     }
 
@@ -106,7 +106,7 @@ public abstract class Car {
             decrementSpeed(amount);
         }
         else{
-            throw new IllegalArgumentException("amount out of range 0 to 1")
+            throw new IllegalArgumentException("amount out of range 0 to 1");
         }
         
     }
