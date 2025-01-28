@@ -9,8 +9,8 @@ public abstract class Car {
     private final String modelName; // The car model name
     private double currentSpeed; // The current speed of the car
     private Color color;// Color of the car
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private Direction direction;
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
@@ -27,6 +27,14 @@ public abstract class Car {
 
     public enum Direction {
         UP, DOWN, LEFT, RIGHT
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
     public int getNrDoors() {
