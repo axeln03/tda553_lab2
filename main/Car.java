@@ -13,7 +13,7 @@ public abstract class Car {
     private int y;
     private Direction direction;
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName, double currentSpeed) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -26,10 +26,7 @@ public abstract class Car {
     }
 
     public enum Direction {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
+        UP, DOWN, LEFT, RIGHT
     }
 
     public int getNrDoors() {
@@ -86,5 +83,66 @@ public abstract class Car {
         decrementSpeed(amount);
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction newDirection) {
+        direction = newDirection;
+    }
+
+    public void turnRight() {
+        switch (direction) {
+            case UP:
+                setDirection(Direction.RIGHT);
+                break;
+            case RIGHT:
+                setDirection(Direction.DOWN);
+                break;
+            case DOWN:
+                setDirection(Direction.LEFT);
+                break;
+            case LEFT:
+                setDirection(Direction.UP);
+                break;
+        }
+
+    }
+
+    public void turnLeft() {
+        switch (direction) {
+            case UP:
+                setDirection(Direction.LEFT);
+                break;
+            case RIGHT:
+                setDirection(Direction.UP);
+                break;
+            case DOWN:
+                setDirection(Direction.RIGHT);
+                break;
+            case LEFT:
+                setDirection(Direction.DOWN);
+                break;
+        }
+
+    }
+
+    public void move() {
+        double currentSpeed = getCurrentSpeed();
+        switch (direction) {
+            case UP:
+                y += currentSpeed;
+                break;
+            case RIGHT:
+                x += currentSpeed;
+                break;
+            case DOWN:
+                y -= currentSpeed;
+                break;
+            case LEFT:
+                x -= currentSpeed;
+                break;
+        }
+    }
 
 }
