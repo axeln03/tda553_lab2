@@ -1,3 +1,5 @@
+package tests;
+
 import main.Car;
 import main.Saab95;
 import org.junit.Test;
