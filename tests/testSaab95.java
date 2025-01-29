@@ -31,4 +31,19 @@ public class testSaab95 {
         assertThrows(IllegalArgumentException.class, () -> {saab.brake(x);});
         assertThrows(IllegalArgumentException.class, () -> {saab.brake(y);});
     }
+
+    @Test
+    public void testGasResult(){
+        saab.setCurrentSpeed(2.0);
+        saab.gas(0);
+        assertTrue(2 <= saab.getCurrentSpeed());
+    }
+
+    @Test
+    public void testBrakeResult(){
+        saab.setCurrentSpeed(2.0);
+        saab.brake(0.5);
+        assertTrue(2 >= saab.getCurrentSpeed());
+    }
+
 }
