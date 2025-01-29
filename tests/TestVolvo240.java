@@ -9,69 +9,55 @@ import static org.junit.Assert.*;
 
 public class TestVolvo240 {
 
-    Saab95 saab = new Saab95();
+    Saab95 volvo = new Saab95();
 
-    @Test
-    public void testTurbo() {
-        saab.setTurboOn();
-        assertTrue(saab.getTurboStatus());
-        saab.setTurboOff();
-        assertFalse(saab.getTurboStatus());
-    }
-
-    @Test
-    public void testSpeedFactor() {
-        assertTrue(1.25 == saab.speedFactor());
-        saab.setTurboOn();
-        assertTrue(1.625 == saab.speedFactor());
-    }
 
     @Test
     public void testNumberOfDoors() {
-        assertEquals(2, saab.getNrDoors());
+        assertEquals(2, volvo.getNrDoors());
     }
 
     @Test
     public void testEnginePower() {
-        assertTrue(125 == saab.getEnginePower()); // Didn't work with assertEquals()
+        assertTrue(125 == volvo.getEnginePower()); // Didn't work with assertEquals()
     }
 
 
     @Test
     public void testColor() {
-        assertEquals(red, saab.getColor());
+        assertEquals(red, volvo.getColor());
     }
 
     @Test
     public  void testModelName() {
-        assertTrue("Saab95".equals(saab.getModelName()));
+        assertTrue("Saab95".equals(volvo.getModelName()));
     }
 
 
     @Test
     public void testTurnRight() {
-        saab.setDirection(Car.Direction.UP);
-        saab.turnRight();
-        assertEquals(Car.Direction.RIGHT, saab.getDirection());
-        saab.turnRight();
-        assertEquals(Car.Direction.DOWN, saab.getDirection());
-        saab.turnRight();
-        assertEquals(Car.Direction.LEFT, saab.getDirection());
-        saab.turnRight();
-        assertEquals(Car.Direction.UP, saab.getDirection());
+        volvo.setDirection(Car.Direction.UP);
+        volvo.turnRight();
+        assertEquals(Car.Direction.RIGHT, volvo.getDirection());
+        volvo.turnRight();
+        assertEquals(Car.Direction.DOWN, volvo.getDirection());
+        volvo.turnRight();
+        assertEquals(Car.Direction.LEFT, volvo.getDirection());
+        volvo.turnRight();
+        assertEquals(Car.Direction.UP, volvo.getDirection());
     }
 
     @Test
     public void testTurnLeft() {
-        saab.setDirection(Car.Direction.UP);
-        saab.turnLeft();
-        assertEquals(Car.Direction.LEFT, saab.getDirection());
-        saab.turnLeft();
-        assertEquals(Car.Direction.DOWN, saab.getDirection());
-        saab.turnLeft();
-        assertEquals(Car.Direction.RIGHT, saab.getDirection());
-        saab.turnLeft();
-        assertEquals(Car.Direction.UP, saab.getDirection());
+        volvo.setDirection(Car.Direction.UP);
+        volvo.turnLeft();
+        assertEquals(Car.Direction.LEFT, volvo.getDirection());
+        volvo.turnLeft();
+        assertEquals(Car.Direction.DOWN, volvo.getDirection());
+        volvo.turnLeft();
+        assertEquals(Car.Direction.RIGHT, volvo.getDirection());
+        volvo.turnLeft();
+        assertEquals(Car.Direction.UP, volvo.getDirection());
 
     }
 
@@ -80,10 +66,10 @@ public class TestVolvo240 {
         double x = 1.1;
         double y = -0.1;
         assertThrows(IllegalArgumentException.class, () -> {
-            saab.gas(x);
+            volvo.gas(x);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            saab.gas(y);
+            volvo.gas(y);
         });
     }
 
@@ -92,35 +78,35 @@ public class TestVolvo240 {
         double x = 1.1;
         double y = -0.1;
         assertThrows(IllegalArgumentException.class, () -> {
-            saab.brake(x);
+            volvo.brake(x);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            saab.brake(y);
+            volvo.brake(y);
         });
     }
 
     @Test
     public void testGasResult() {
-        saab.setCurrentSpeed(2.0);
-        saab.gas(0);
-        assertTrue(2 <= saab.getCurrentSpeed());
+        volvo.setCurrentSpeed(2.0);
+        volvo.gas(0);
+        assertTrue(2 <= volvo.getCurrentSpeed());
     }
 
     @Test
     public void testBrakeResult() {
-        saab.setCurrentSpeed(2.0);
-        saab.brake(0.5);
-        assertTrue(2 >= saab.getCurrentSpeed());
+        volvo.setCurrentSpeed(2.0);
+        volvo.brake(0.5);
+        assertTrue(2 >= volvo.getCurrentSpeed());
     }
 
     @Test
     public void testCurrentSpeedInterval() {
-        double enginePower = saab.getEnginePower();
-        saab.setCurrentSpeed(0);
-        saab.incrementSpeed(250);
-        assertTrue(enginePower == saab.getCurrentSpeed());
-        saab.decrementSpeed(500);
-        assertTrue(0 == saab.getCurrentSpeed());
+        double enginePower = volvo.getEnginePower();
+        volvo.setCurrentSpeed(0);
+        volvo.incrementSpeed(250);
+        assertTrue(enginePower == volvo.getCurrentSpeed());
+        volvo.decrementSpeed(500);
+        assertTrue(0 == volvo.getCurrentSpeed());
 
     }
 
