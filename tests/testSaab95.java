@@ -6,6 +6,7 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 
 public class testSaab95 {
+
     Saab95 saab = new Saab95();
 
     @Test
