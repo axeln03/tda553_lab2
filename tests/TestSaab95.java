@@ -93,4 +93,15 @@ public class TestSaab95 {
         assertTrue(2 >= saab.getCurrentSpeed());
     }
 
-}ö
+    @Test
+    public void testCurrentSpeedInterval(){
+        double enginePower =  saab.getEnginePower();
+        saab.setCurrentSpeed(0);
+        saab.incrementSpeed(250);
+        assertTrue(enginePower == saab.getCurrentSpeed());
+        saab.decrementSpeed(500);
+        assertTrue(0 == saab.getCurrentSpeed());
+
+    }
+
+}
