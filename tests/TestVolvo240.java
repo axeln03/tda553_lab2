@@ -2,35 +2,36 @@ package tests;
 
 import main.Car;
 import main.Saab95;
+import main.Volvo240;
 import org.junit.Test;
 
-import static java.awt.Color.red;
+import static java.awt.Color.*;
 import static org.junit.Assert.*;
 
 public class TestVolvo240 {
 
-    Saab95 volvo = new Saab95();
+    Volvo240 volvo = new Volvo240();
 
 
     @Test
     public void testNumberOfDoors() {
-        assertEquals(2, volvo.getNrDoors());
+        assertEquals(4, volvo.getNrDoors());
     }
 
     @Test
     public void testEnginePower() {
-        assertTrue(125 == volvo.getEnginePower()); // Didn't work with assertEquals()
+        assertTrue(100 == volvo.getEnginePower()); // Didn't work with assertEquals()
     }
 
 
     @Test
     public void testColor() {
-        assertEquals(red, volvo.getColor());
+        assertEquals(black, volvo.getColor());
     }
 
     @Test
     public  void testModelName() {
-        assertTrue("Saab95".equals(volvo.getModelName()));
+        assertTrue("Volvo240".equals(volvo.getModelName()));
     }
 
 
