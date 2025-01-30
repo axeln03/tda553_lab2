@@ -58,7 +58,7 @@ public class TestSaab95 {
     @Test
     public void testStartEngine(){
         saab.startEngine();
-        assertTrue(0.1 == saab.getCurrentSpeed());
+        assertEquals(0.1, saab.getCurrentSpeed(), 0.00001);
     }
 
     @Test
@@ -106,7 +106,7 @@ public class TestSaab95 {
         saab.setDirection(Car.Direction.UP);
         saab.setCurrentSpeed(10);
         saab.move();
-        assertTrue(10 == saab.getY());
+        assertEquals(10, saab.getY(), 0.0);
     }
 
     @Test
