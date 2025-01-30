@@ -1,9 +1,10 @@
-package tests;
+
 
 import main.Car;
 import main.Saab95;
 import org.junit.Test;
 
+import static java.awt.Color.black;
 import static java.awt.Color.red;
 import static org.junit.Assert.*;
 
@@ -40,6 +41,31 @@ public class TestSaab95 {
     @Test
     public void testColor() {
         assertEquals(red, saab.getColor());
+        saab.setColor(black);
+        assertEquals(black,saab.getColor());
+    }
+
+    @Test
+    public void testGetX(){
+        assertTrue(0 == saab.getX());
+    }
+
+    @Test
+    public void testGetY(){
+        assertTrue(0 == saab.getY());
+    }
+
+    @Test
+    public void testStartEngine(){
+        saab.startEngine();
+        assertTrue(0.1 == saab.getCurrentSpeed());
+    }
+
+    @Test
+    public void testStopEngine(){
+        saab.startEngine();
+        saab.stopEngine();
+        assertTrue(0 == saab.getCurrentSpeed());
     }
 
     @Test
@@ -73,6 +99,14 @@ public class TestSaab95 {
         saab.turnLeft();
         assertEquals(Car.Direction.UP, saab.getDirection());
 
+    }
+
+    @Test
+    public void testMove(){
+        saab.setDirection(Car.Direction.UP);
+        saab.setCurrentSpeed(10);
+        saab.move();
+        assertTrue(10 == saab.getY());
     }
 
     @Test
