@@ -5,19 +5,13 @@ import main.Saab95;
 import main.Volvo240;
 import org.junit.Test;
 
-import static java.awt.Color.black;
-import static java.awt.Color.red;
+import static java.awt.Color.*;
 import static org.junit.Assert.*;
 
 public class TestVolvo240 {
 
     Volvo240 volvo = new Volvo240();
 
-
-    @Test
-    public void testSpeedFactor() {
-        assertTrue(1.25 == volvo.speedFactor());
-    }
 
     @Test
     public void testNumberOfDoors() {
@@ -109,10 +103,11 @@ public class TestVolvo240 {
     @Test
     public void testCurrentSpeedInterval() {
         double enginePower = volvo.getEnginePower();
-        volvo.setCurrentSpeed(0);
-        volvo.incrementSpeed(250);
+        volvo.setCurrentSpeed(100);
+        volvo.gas(1);
         assertTrue(enginePower == volvo.getCurrentSpeed());
-        volvo.decrementSpeed(500);
+        volvo.setCurrentSpeed(0);
+        volvo.brake(1);
         assertTrue(0 == volvo.getCurrentSpeed());
 
     }
