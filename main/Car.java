@@ -2,7 +2,7 @@ package main;
 
 import java.awt.*;
 
-public abstract class Car {
+public abstract class Car implements Movable {
 
     private final int nrDoors; // Number of doors on the car
     private final double enginePower; // Engine power of the car
@@ -77,40 +77,35 @@ public abstract class Car {
 
     public abstract double speedFactor();
 
-    public void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
         double currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
         setCurrentSpeed(currentSpeed);
     }
 
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         double currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
         setCurrentSpeed(currentSpeed);
     }
 
 
-    // TODO fix this method according to lab pm
     public void gas(double amount) {
-        if(amount >= 0 && amount <= 1){
+        if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
-        }
-        else{
+        } else {
             throw new IllegalArgumentException("amount out of range 0 to 1");
         }
     }
 
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
 
-        if(amount >= 0 && amount <= 1){
+        if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
-        }
-        else{
+        } else {
             throw new IllegalArgumentException("amount out of range 0 to 1");
         }
-        
-    }
 
+    }
 
 
     public Direction getDirection() {
