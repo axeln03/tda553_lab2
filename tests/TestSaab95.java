@@ -116,10 +116,11 @@ public class TestSaab95 {
     @Test
     public void testCurrentSpeedInterval() {
         double enginePower = saab.getEnginePower();
-        saab.setCurrentSpeed(0);
-        saab.incrementSpeed(250);
+        saab.setCurrentSpeed(125);
+        saab.gas(1);
         assertTrue(enginePower == saab.getCurrentSpeed());
-        saab.decrementSpeed(500);
+        saab.setCurrentSpeed(0);
+        saab.brake(1);
         assertTrue(0 == saab.getCurrentSpeed());
 
     }
