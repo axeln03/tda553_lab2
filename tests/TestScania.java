@@ -13,5 +13,7 @@ public class TestScania {
         scania.setCurrentSpeed(0);
         scania.raiseBed(100);
         assertEquals(scania.getCurrentBedAngle(),  70, 0.001);
+        scania.lowerBed(100);
+        assertEquals(scania.getCurrentBedAngle(),  0, 0.001);
     }
 }
