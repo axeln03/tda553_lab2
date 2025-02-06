@@ -1,10 +1,10 @@
 package main;
 import java.awt.*;
 
-public abstract class Truck extends Car {
+public abstract class Truck extends Vehicle {
 
     public Truck(int nrDoors, double enginePower, Color color, String modelName, int x, int y) {
-        super(nrDoors, enginePower, color, String modelName, x, y);
+        super(nrDoors, enginePower, color, modelName, x, y);
     }
 
     @Override
@@ -12,6 +12,4 @@ public abstract class Truck extends Car {
         return getEnginePower() * 0.01;
     }
 
-    public abstract void raiseBed(double amount);
-
-    public abstract void lowerBed(double amount);
+}
