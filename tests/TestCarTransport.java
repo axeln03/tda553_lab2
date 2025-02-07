@@ -8,6 +8,6 @@ public class TestCarTransport {
 
     CarTransport carTransport = new CarTransport(2, 100, Color.green, "Mercedes", 0, 0);
     Saab95 saab = new Saab95();
-    
+
 
 }
