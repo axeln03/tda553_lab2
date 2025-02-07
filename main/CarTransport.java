@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Stack;
 
 public abstract class CarTransport extends Truck implements Loadable {
-    private Stack<Car> loadedCars = new Stack<Car>();
+    private Trailer<Car> trailer = new Trailer<Car>(5);
     private boolean ramp;
 
 
@@ -35,17 +35,17 @@ public abstract class CarTransport extends Truck implements Loadable {
 
 
     public void loadOn(Car car) {
-        if ((loadedCars.size() < 5) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()){
-            loadedCars.push(car);
+        if ((trailer.getCurrentSize()<trailer.getMaxSize()) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()){
+            trailer.load(car);
         }
         else {
             throw new IllegalArgumentException("Car transporter is full");
         }
     }
 
-    public Car loadOff() {
+    public void loadOff() {
         if (!getRamp()) {
-            loadedCars.pop();
+            trailer.deload();
         }
         else {
             throw new IllegalArgumentException("Can't unload car while ramp is up");

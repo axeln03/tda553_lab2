@@ -21,8 +21,7 @@ public class Scania extends FlatbedTruck {
     public void raiseBed(double amount) {
         if (getCurrentSpeed() == 0) {
             bedAngle = Math.min(getCurrentBedAngle() + bedSpeed * amount, 70);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Can't raise bed while moving");
         }
     }
@@ -31,18 +30,17 @@ public class Scania extends FlatbedTruck {
     public void lowerBed(double amount) {
         if (getCurrentSpeed() == 0) {
             bedAngle = Math.max(getCurrentBedAngle() - bedSpeed * amount, 0);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Can't lower bed while moving");
+        }
     }
-
     @Override
-    public void gas;(double value) {
+    public void gas(double value) {
         if (getCurrentBedAngle() == 0) {
             super.gas(value);
-        }
-        else {
-            throw new IllegalArgumentException("Can't move while bed i up.")
+        } else {
+                throw new IllegalArgumentException("Can't move while bed i up.");
         }
     }
+
 }

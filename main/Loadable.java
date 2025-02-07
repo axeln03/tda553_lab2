@@ -1,6 +1,6 @@
 package main;
 
 public interface Loadable<T>  {
-        T loadOff();
+        void loadOff();
         void loadOn(T t);
 }
