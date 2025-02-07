@@ -11,8 +11,6 @@ public class TestCarTransport {
     CarTransport carTransport = new CarTransport(2, 100, Color.green, "Mercedes", 0, 0);
     Saab95 saab = new Saab95();
 
-<<<<<<< HEAD
-=======
     @Test
     public void testUnLoadUp(){
         carTransport.lowerRamp();
@@ -33,6 +31,5 @@ public class TestCarTransport {
 
     }
 
->>>>>>> 57311c9c71ab0f26e5708d23ab8832a31eeb7e6a
 
 }

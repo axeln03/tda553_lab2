@@ -24,9 +24,5 @@ public class Storage<T extends Vehicle> {
     }
     public T deLoad(){
         return stack.pop();
-<<<<<<< HEAD:main/Storage.java
-
-=======
->>>>>>> 57311c9c71ab0f26e5708d23ab8832a31eeb7e6a:main/Trailer.java
     }
 }
