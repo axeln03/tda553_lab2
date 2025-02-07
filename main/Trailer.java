@@ -23,6 +23,6 @@ public class Trailer<T extends Vehicle> {
         stack.push(type);
     }
     public T deLoad(){
-        stack.pop();
+        return stack.pop();
     }
 }
