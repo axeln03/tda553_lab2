@@ -33,6 +33,14 @@ public abstract class Vehicle implements Movable {
         UP, DOWN, LEFT, RIGHT
     }
 
+    public double setX(double value) {
+        x = value;
+    }
+
+    public double setY(double value) {
+        y = value;
+    }
+
     public double getX() {
         return x;
     }
@@ -186,4 +194,7 @@ public abstract class Vehicle implements Movable {
         return isLoaded;
     }
 
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
+    }
 }
