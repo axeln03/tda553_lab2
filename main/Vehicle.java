@@ -33,11 +33,11 @@ public abstract class Vehicle implements Movable {
         UP, DOWN, LEFT, RIGHT
     }
 
-    public double setX(double value) {
+    public void setX(double value) {
         x = value;
     }
 
-    public double setY(double value) {
+    public void setY(double value) {
         y = value;
     }
 
