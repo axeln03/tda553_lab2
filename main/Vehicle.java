@@ -12,6 +12,7 @@ public abstract class Vehicle implements Movable {
     private double x;
     private double y;
     private Direction direction;
+    private boolean isLoaded = false;
 
 
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y) {
@@ -179,6 +180,10 @@ public abstract class Vehicle implements Movable {
         // returns distance as a product of X and Y.
         return Math.abs(relativeValueX * relativeValueY);
 
+    }
+
+    public boolean getIsLoaded(){
+        return isLoaded;
     }
 
 }
