@@ -3,7 +3,7 @@ package main;
 import java.awt.*;
 import java.util.Stack;
 
-public abstract class CarTransport extends Truck implements Loadable {
+public class CarTransport extends Truck implements Loadable<Car> {
     private Trailer<Car> trailer = new Trailer<Car>(5);
     private boolean ramp;
 
@@ -45,12 +45,14 @@ public abstract class CarTransport extends Truck implements Loadable {
         }
     }
 
-    public void loadOff() {
+    public Car loadOff() {
         if (!getRamp()) {
             Car removed = trailer.deLoad();
             removed.setX(this.getX() - 5);
             removed.setY(this.getY() - 5);
             removed.setLoaded(false);
+
+            return removed;
         } else {
             throw new IllegalArgumentException("Can't unload car while ramp is up");
         }
