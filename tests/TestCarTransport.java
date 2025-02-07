@@ -20,5 +20,16 @@ public class TestCarTransport {
 
     }
 
+    @Test
+    public void testSamePosition(){
+        carTransport.lowerRamp();
+        carTransport.loadOn(saab);
+        carTransport.raiseRamp();
+        carTransport.gas(0.5);
+        assertEquals(carTransport.getX(),saab.getX(),0.001);
+        assertEquals(carTransport.getY(),saab.getY(), 0.001);
+
+    }
+
 
 }
