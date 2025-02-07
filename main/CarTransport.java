@@ -37,6 +37,9 @@ public abstract class CarTransport extends Truck implements Loadable {
     public void loadOn(Car car) {
         if ((trailer.getCurrentSize()<trailer.getMaxSize()) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()){
             trailer.load(car);
+
+
+
         }
         else {
             throw new IllegalArgumentException("Car transporter is full");
@@ -45,7 +48,7 @@ public abstract class CarTransport extends Truck implements Loadable {
 
     public void loadOff() {
         if (!getRamp()) {
-            trailer.deload();
+            trailer.deLoad();
         }
         else {
             throw new IllegalArgumentException("Can't unload car while ramp is up");
