@@ -22,7 +22,7 @@ public class Trailer<T extends Vehicle> {
     public void load(T type){
         stack.push(type);
     }
-    public void deLoad(){
+    public T deLoad(){
         stack.pop();
     }
 }
