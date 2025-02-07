@@ -1,15 +1,14 @@
 package main;
-import java.awt.*;
 
 public class Workshop<T extends Car> implements Loadable<T> {
     private int maxCapacity;
     String name;
-    private Storage<Car> storage;
+    private Storage<T> storage;
 
     public Workshop(int maxCapacity, String name){
         this.maxCapacity = maxCapacity;
         this.name = name;
-        this.storage = new Storage<Car>(maxCapacity);
+        this.storage = new Storage<T>(maxCapacity);
     }
 
     public int getMaxCapacity() {
@@ -20,7 +19,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
         return name;
     }
 
-    public Storage<Car> getStorage() {
+    public Storage<T> getStorage() {
         return storage;
     }
 
@@ -34,7 +33,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
     }
 
     public T loadOff(){
-        return (T) storage.deLoad();
+        return storage.deLoad();
     }
 
 }
