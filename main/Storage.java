@@ -2,12 +2,12 @@ package main;
 
 import java.util.Stack;
 
-public class Trailer<T extends Vehicle> {
+public class Storage<T extends Vehicle> {
     private final int capacity;
     private Stack<T> stack;
 
 
-    public Trailer(int capacity ){
+    public Storage(int capacity ){
 
         this.capacity = capacity;
         this.stack = new Stack<>();
@@ -23,6 +23,7 @@ public class Trailer<T extends Vehicle> {
         stack.push(type);
     }
     public T deLoad(){
-        stack.pop();
+        return stack.pop();
+
     }
 }
