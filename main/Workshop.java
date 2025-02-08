@@ -25,7 +25,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
         return storage.getCurrentStorage();
     }
 
-    public void loadOn(T car) {
+    public <U extends T> void loadOn(U car) {
         if (storage.getCurrentSize() < getMaxCapacity()) {
             storage.load(car);
         }
@@ -34,7 +34,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
         }
     }
 
-    public T loadOff(){
+    public <U extends T> U loadOff(){
         return storage.deLoad();
     }
 
