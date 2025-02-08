@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Stack;
+
 public class Workshop<T extends Car> implements Loadable<T> {
     private int maxCapacity;
     String name;
@@ -19,8 +21,8 @@ public class Workshop<T extends Car> implements Loadable<T> {
         return name;
     }
 
-    public Storage<T> getStorage() {
-        return storage;
+    public Stack<T> getStorage() {
+        return storage.getCurrentStorage();
     }
 
     public void loadOn(T car) {

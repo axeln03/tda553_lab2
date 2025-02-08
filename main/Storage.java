@@ -12,17 +12,17 @@ public class Storage<T extends Vehicle> {
         this.capacity = capacity;
         this.stack = new Stack<>();
     }
-
+    public Stack<T> getCurrentStorage(){return stack;}
     public int getCurrentSize(){
         return stack.size();
     }
     public int getMaxSize(){
         return capacity;
     }
-    public void load(T type){
+    public <U extends T> void load(U type){
         stack.push(type);
     }
-    public T deLoad(){
-        return stack.pop();
+    public <U extends T> U deLoad(){
+        return (U) stack.pop();
     }
 }
