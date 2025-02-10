@@ -34,12 +34,13 @@ public class Scania extends FlatbedTruck {
             throw new IllegalArgumentException("Can't lower bed while moving");
         }
     }
+
     @Override
     public void gas(double value) {
         if (getCurrentBedAngle() == 0) {
             super.gas(value);
         } else {
-                throw new IllegalArgumentException("Can't move while bed i up.");
+            throw new IllegalArgumentException("Can't move while bed i up.");
         }
     }
 

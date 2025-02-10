@@ -190,7 +190,7 @@ public abstract class Vehicle implements Movable {
 
     }
 
-    public boolean getIsLoaded(){
+    public boolean getIsLoaded() {
         return isLoaded;
     }
 

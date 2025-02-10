@@ -2,12 +2,12 @@ package main;
 
 import java.util.Stack;
 
-public class Workshop<T extends Car> implements Loadable<T> {
+public class Workshop<T extends Vehicle> implements Loadable<T> {
     private int maxCapacity;
     String name;
     private Storage<T> storage;
 
-    public Workshop(int maxCapacity, String name){
+    public Workshop(int maxCapacity, String name) {
         this.maxCapacity = maxCapacity;
         this.name = name;
         this.storage = new Storage<T>(maxCapacity);
@@ -28,13 +28,12 @@ public class Workshop<T extends Car> implements Loadable<T> {
     public <U extends T> void loadOn(U car) {
         if (storage.getCurrentSize() < getMaxCapacity()) {
             storage.load(car);
-        }
-        else {
+        } else {
             throw new RuntimeException("The workshop is full!");
         }
     }
 
-    public <U extends T> U loadOff(){
+    public <U extends T> U loadOff() {
         return storage.deLoad();
     }
 
