@@ -9,7 +9,7 @@ import java.awt.*;
 
 import static org.junit.Assert.*;
 
-public class testWorkshop {
+public class TestWorkshop {
     Workshop<Volvo240> workshopVolvo = new Workshop<Volvo240>(40,"VolvoWorkshop");
     Workshop<Car> workshop = new Workshop<Car>(2, "Workshop");
     CarTransport carTransport = new CarTransport(2,100, Color.black,"transport",0,0);
