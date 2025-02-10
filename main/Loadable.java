@@ -1,6 +1,6 @@
 package main;
 
 public interface Loadable<T>  {
-        <U extends T> U loadOff();
-        <U extends T> void loadOn(U instance);
+        T loadOff();
+        void loadOn(T instance);
 }

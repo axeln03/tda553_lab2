@@ -3,8 +3,8 @@ package main;
 import java.awt.*;
 import java.util.Stack;
 
-public class CarTransport extends Truck implements Loadable<Car> {
-    private Storage<Car> storage = new Storage<Car>(5);
+public class CarTransport extends Truck implements Loadable<T> {
+    private Storage<T> storage = new Storage<>(5);
     private boolean ramp;
 
 
@@ -13,6 +13,7 @@ public class CarTransport extends Truck implements Loadable<Car> {
         this.ramp = true;
     }
 
+    @Override
     public void lowerRamp() {
         if (getCurrentSpeed() == 0) {
             ramp = false;
@@ -22,6 +23,7 @@ public class CarTransport extends Truck implements Loadable<Car> {
 
     }
 
+    @Override
     public void raiseRamp() {
         ramp = true;
     }
@@ -30,12 +32,12 @@ public class CarTransport extends Truck implements Loadable<Car> {
         return ramp;
     }
 
-    public Stack<Car> getStorage() {
+    public Stack<T> getStorage() {
         return storage.getCurrentStorage();
     }
 
 
-    public <T extends Car> void loadOn(T car) {
+    public <T extends Vehicle> void loadOn(T car) {
         if ((storage.getCurrentSize() < storage.getMaxSize()) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()) {
             storage.load(car);
 
@@ -49,7 +51,8 @@ public class CarTransport extends Truck implements Loadable<Car> {
         }
     }
 
-    public <T extends Car> T loadOff() {
+    @Override
+    public T loadOff() {
         if (!getRamp()) {
             T removed = storage.deLoad();
             removed.setX(this.getX() - 5);

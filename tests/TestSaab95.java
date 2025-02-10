@@ -1,7 +1,6 @@
+import main.*;
 
 
-import main.Car;
-import main.Saab95;
 import org.junit.Test;
 
 import static java.awt.Color.black;
@@ -76,34 +75,34 @@ public class TestSaab95 {
 
     @Test
     public void testTurnRight() {
-        saab.setDirection(Car.Direction.UP);
+        saab.setDirection(Direction.UP);
         saab.turnRight();
-        assertEquals(Car.Direction.RIGHT, saab.getDirection());
+        assertEquals(Direction.RIGHT, saab.getDirection());
         saab.turnRight();
-        assertEquals(Car.Direction.DOWN, saab.getDirection());
+        assertEquals(Direction.DOWN, saab.getDirection());
         saab.turnRight();
-        assertEquals(Car.Direction.LEFT, saab.getDirection());
+        assertEquals(Direction.LEFT, saab.getDirection());
         saab.turnRight();
-        assertEquals(Car.Direction.UP, saab.getDirection());
+        assertEquals(Direction.UP, saab.getDirection());
     }
 
     @Test
     public void testTurnLeft() {
-        saab.setDirection(Car.Direction.UP);
+        saab.setDirection(Direction.UP);
         saab.turnLeft();
-        assertEquals(Car.Direction.LEFT, saab.getDirection());
+        assertEquals(Direction.LEFT, saab.getDirection());
         saab.turnLeft();
-        assertEquals(Car.Direction.DOWN, saab.getDirection());
+        assertEquals(Direction.DOWN, saab.getDirection());
         saab.turnLeft();
-        assertEquals(Car.Direction.RIGHT, saab.getDirection());
+        assertEquals(Direction.RIGHT, saab.getDirection());
         saab.turnLeft();
-        assertEquals(Car.Direction.UP, saab.getDirection());
+        assertEquals(Direction.UP, saab.getDirection());
 
     }
 
     @Test
     public void testMove(){
-        saab.setDirection(Car.Direction.UP);
+        saab.setDirection(Direction.UP);
         saab.setCurrentSpeed(10);
         saab.move();
         assertEquals(10, saab.getY(), 0.0);

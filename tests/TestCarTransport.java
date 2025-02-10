@@ -1,4 +1,3 @@
-import main.Car;
 import main.CarTransport;
 import main.Saab95;
 import org.junit.Test;

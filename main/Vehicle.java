@@ -29,9 +29,6 @@ public abstract class Vehicle implements Movable {
 
     // Constants used for switch statsments later in the code
     // Each car is facing RIGHT after the constructor has created the car
-    public enum Direction {
-        UP, DOWN, LEFT, RIGHT
-    }
 
     public void setX(double value) {
         x = value;

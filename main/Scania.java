@@ -2,7 +2,7 @@ package main;
 
 import java.awt.*;
 
-public class Scania extends FlatbedTruck {
+public class Scania extends Truck implements RampFunction {
 
     private double bedAngle;
     private final double bedSpeed = 5;
@@ -13,23 +13,35 @@ public class Scania extends FlatbedTruck {
         this.bedAngle = 0;
     }
 
+    public void setBedAngle(double bedAngle) {
+        this.bedAngle = bedAngle;
+    }
+
+    public double getBedAngle() {
+        return bedAngle;
+    }
+
+    public double getBedSpeed() {
+        return bedSpeed;
+    }
+
     public double getCurrentBedAngle() {
         return bedAngle;
     }
 
     @Override
-    public void raiseBed(double amount) {
+    public void raiseRamp() {
         if (getCurrentSpeed() == 0) {
-            bedAngle = Math.min(getCurrentBedAngle() + bedSpeed * amount, 70);
+            setBedAngle(Math.min(getCurrentBedAngle() + getBedSpeed(), 70));
         } else {
             throw new IllegalArgumentException("Can't raise bed while moving");
         }
     }
 
     @Override
-    public void lowerBed(double amount) {
+    public void lowerRamp() {
         if (getCurrentSpeed() == 0) {
-            bedAngle = Math.max(getCurrentBedAngle() - bedSpeed * amount, 0);
+            setBedAngle(Math.max(getCurrentBedAngle() - getBedSpeed(), 0));
         } else {
             throw new IllegalArgumentException("Can't lower bed while moving");
         }

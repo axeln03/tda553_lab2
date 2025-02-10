@@ -1,8 +1,6 @@
 
 
-import main.Car;
-import main.Saab95;
-import main.Volvo240;
+import main.*;
 import org.junit.Test;
 
 import static java.awt.Color.*;
@@ -37,28 +35,28 @@ public class TestVolvo240 {
 
     @Test
     public void testTurnRight() {
-        volvo.setDirection(Car.Direction.UP);
+        volvo.setDirection(Direction.UP);
         volvo.turnRight();
-        assertEquals(Car.Direction.RIGHT, volvo.getDirection());
+        assertEquals(Direction.RIGHT, volvo.getDirection());
         volvo.turnRight();
-        assertEquals(Car.Direction.DOWN, volvo.getDirection());
+        assertEquals(Direction.DOWN, volvo.getDirection());
         volvo.turnRight();
-        assertEquals(Car.Direction.LEFT, volvo.getDirection());
+        assertEquals(Direction.LEFT, volvo.getDirection());
         volvo.turnRight();
-        assertEquals(Car.Direction.UP, volvo.getDirection());
+        assertEquals(Direction.UP, volvo.getDirection());
     }
 
     @Test
     public void testTurnLeft() {
-        volvo.setDirection(Car.Direction.UP);
+        volvo.setDirection(Direction.UP);
         volvo.turnLeft();
-        assertEquals(Car.Direction.LEFT, volvo.getDirection());
+        assertEquals(Direction.LEFT, volvo.getDirection());
         volvo.turnLeft();
-        assertEquals(Car.Direction.DOWN, volvo.getDirection());
+        assertEquals(Direction.DOWN, volvo.getDirection());
         volvo.turnLeft();
-        assertEquals(Car.Direction.RIGHT, volvo.getDirection());
+        assertEquals(Direction.RIGHT, volvo.getDirection());
         volvo.turnLeft();
-        assertEquals(Car.Direction.UP, volvo.getDirection());
+        assertEquals(Direction.UP, volvo.getDirection());
 
     }
 
