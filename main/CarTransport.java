@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.*;
+import java.util.Stack;
 
 public class CarTransport extends Truck implements Loadable<Car> {
     private Storage<Car> storage = new Storage<Car>(5);
@@ -29,8 +30,12 @@ public class CarTransport extends Truck implements Loadable<Car> {
         return ramp;
     }
 
+    public Stack<Car> getStorage() {
+        return storage.getCurrentStorage();
+    }
 
-    public void loadOn(Car car) {
+
+    public <T extends Car> void loadOn(T car) {
         if ((storage.getCurrentSize() < storage.getMaxSize()) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()) {
             storage.load(car);
 
@@ -44,9 +49,9 @@ public class CarTransport extends Truck implements Loadable<Car> {
         }
     }
 
-    public Car loadOff() {
+    public <T extends Car> T loadOff() {
         if (!getRamp()) {
-            Car removed = storage.deLoad();
+            T removed = storage.deLoad();
             removed.setX(this.getX() - 5);
             removed.setY(this.getY() - 5);
             removed.setLoaded(false);
