@@ -1,10 +1,12 @@
 package main;
 
+import org.hamcrest.core.Is;
+
 import java.awt.*;
 import java.util.Stack;
 
-public class CarTransport extends Truck implements Loadable<T> {
-    private Storage<T> storage = new Storage<>(5);
+public class CarTransport extends Truck implements RampFunction {
+    private Storage<Car> storage = new Storage<>(5);
     private boolean ramp;
 
 
@@ -32,14 +34,14 @@ public class CarTransport extends Truck implements Loadable<T> {
         return ramp;
     }
 
-    public Stack<T> getStorage() {
+    public Stack<Car> getStorage() {
         return storage.getCurrentStorage();
     }
 
 
-    public <T extends Vehicle> void loadOn(T car) {
+    public void load(Car car) {
         if ((storage.getCurrentSize() < storage.getMaxSize()) && (getCurrentSpeed() == 0) && relativeDistance(car) <= 100 && !getRamp()) {
-            storage.load(car);
+            storage.loadOn(car);
 
             car.setX(this.getX());
             car.setY(this.getY());
@@ -51,10 +53,9 @@ public class CarTransport extends Truck implements Loadable<T> {
         }
     }
 
-    @Override
-    public T loadOff() {
+    public Car unLoad() {
         if (!getRamp()) {
-            T removed = storage.deLoad();
+            Car removed = storage.loadOff();
             removed.setX(this.getX() - 5);
             removed.setY(this.getY() - 5);
             removed.setLoaded(false);

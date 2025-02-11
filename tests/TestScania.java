@@ -11,9 +11,9 @@ public class TestScania {
     @Test
     public void testBedLimits(){
         scania.setCurrentSpeed(0);
-        scania.raiseBed(100);
-        assertEquals(scania.getCurrentBedAngle(),  70, 0.001);
-        scania.lowerBed(100);
+        scania.raiseRamp();
+        assertEquals(scania.getCurrentBedAngle(),  5, 0.001);
+        scania.lowerRamp();
         assertEquals(scania.getCurrentBedAngle(),  0, 0.001);
     }
 }

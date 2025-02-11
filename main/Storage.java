@@ -2,7 +2,7 @@ package main;
 
 import java.util.Stack;
 
-public class Storage<T extends Vehicle> {
+public class Storage<T> implements Loadable<T> {
     private final int capacity;
     private Stack<T> stack;
 
@@ -25,6 +25,21 @@ public class Storage<T extends Vehicle> {
         return capacity;
     }
 
+    @Override
+    public T loadOff() {
+        return stack.pop();
+    }
+
+    @Override
+    public void loadOn(T t) {
+        stack.push(t);
+    }
+
+    public T removeIndex(int i){
+        return stack.remove(i);
+    }
+
+    /*
     public <U extends T> void load(U type) {
         stack.push(type);
     }
@@ -32,4 +47,6 @@ public class Storage<T extends Vehicle> {
     public <U extends T> U deLoad() {
         return (U) stack.pop();
     }
+
+     */
 }

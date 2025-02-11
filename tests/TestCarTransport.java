@@ -1,13 +1,13 @@
-import main.CarTransport;
-import main.Saab95;
+import main.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.awt.*;
+import java.util.Vector;
 
 public class TestCarTransport {
 
-    CarTransport carTransport = new CarTransport(2, 100, Color.green, "Mercedes", 0, 0);
+    CarTransport carTransport = new CarTransport(2, 100,Color.green, "Mercedes", 0, 0);
     Saab95 saab = new Saab95();
 
 
@@ -30,21 +30,21 @@ public class TestCarTransport {
     @Test
     public void testUnLoadUp(){
         carTransport.lowerRamp();
-        carTransport.loadOn(saab);
+        carTransport.load(saab);
         carTransport.raiseRamp();
-        assertThrows(IllegalArgumentException.class,() -> {carTransport.loadOff();});
+        assertThrows(IllegalArgumentException.class,() -> {carTransport.unLoad();});
 
     }
 
     @Test
     public void loadRampUp() {
-        assertThrows(IllegalArgumentException.class, () -> {carTransport.loadOn((saab));});
+        assertThrows(IllegalArgumentException.class, () -> {carTransport.load((saab));});
     }
 
     @Test
     public void testSamePosition(){
         carTransport.lowerRamp();
-        carTransport.loadOn(saab);
+        carTransport.load(saab);
         carTransport.raiseRamp();
         carTransport.gas(0.5);
         assertEquals(carTransport.getX(),saab.getX(),0.001);
