@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -39,9 +39,6 @@ public class CarController {
         cc.cars.add(new Saab95());
 
 
-
-
-
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -50,13 +47,13 @@ public class CarController {
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) {
                 car.move();
-                changeRuntimeDirection();
+                changeRuntimeDirection(car);
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(car, x, y);
@@ -69,8 +66,8 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-       for (Vehicle car : cars
-                ) {
+        for (Vehicle car : cars
+        ) {
             car.gas(gas);
         }
     }
@@ -83,25 +80,20 @@ public class CarController {
         }
     }
 
-    void changeRuntimeDirection() {
-        for (Vehicle car: cars){
-            if (car.getX() < 0){
-                car.setCurrentSpeed(0);
-                car.setDirection(Direction.RIGHT);
-            }
-            else if (car.getX() > 700) {
-                car.setCurrentSpeed(0);
-                car.setDirection(Direction.LEFT);
-            }
-            else if (car.getY() < 0) {
-                car.setCurrentSpeed(0);
-                car.setDirection(Direction.DOWN);
-            }
-            else if (car.getY() > 500) {
-                car.setCurrentSpeed(0);
-                car.setDirection(Direction.UP);
-            }
-
+    void changeRuntimeDirection(Vehicle car) {
+        if (car.getX() < 0) {
+            car.setCurrentSpeed(0);
+            car.setDirection(Direction.RIGHT);
+        } else if (car.getX() > 700) {
+            car.setCurrentSpeed(0);
+            car.setDirection(Direction.LEFT);
+        } else if (car.getY() < 0) {
+            car.setCurrentSpeed(0);
+            car.setDirection(Direction.DOWN);
+        } else if (car.getY() > 500) {
+            car.setCurrentSpeed(0);
+            car.setDirection(Direction.UP);
         }
+
     }
 }
