@@ -163,13 +163,13 @@ public abstract class Vehicle implements Movable {
         double currentSpeed = getCurrentSpeed();
         switch (direction) {
             case UP:
-                y += currentSpeed;
+                y -= currentSpeed;
                 break;
             case RIGHT:
                 x += currentSpeed;
                 break;
             case DOWN:
-                y -= currentSpeed;
+                y += currentSpeed;
                 break;
             case LEFT:
                 x -= currentSpeed;

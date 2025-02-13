@@ -49,6 +49,7 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Vehicle car : cars) {
                 car.move();
+                changeRuntimeDirection();
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(x, y);
@@ -64,6 +65,36 @@ public class CarController {
        for (Vehicle car : cars
                 ) {
             car.gas(gas);
+        }
+    }
+
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Vehicle car : cars
+        ) {
+            car.brake(brake);
+        }
+    }
+
+    void changeRuntimeDirection() {
+        for (Vehicle car: cars){
+            if (car.getX() < 0){
+                car.setCurrentSpeed(0);
+                car.setDirection(Direction.RIGHT);
+            }
+            else if (car.getX() > 700) {
+                car.setCurrentSpeed(0);
+                car.setDirection(Direction.LEFT);
+            }
+            else if (car.getY() < 0) {
+                car.setCurrentSpeed(0);
+                car.setDirection(Direction.DOWN);
+            }
+            else if (car.getY() > 500) {
+                car.setCurrentSpeed(0);
+                car.setDirection(Direction.UP);
+            }
+
         }
     }
 }
