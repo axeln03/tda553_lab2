@@ -160,20 +160,22 @@ public abstract class Vehicle implements Movable {
     }
 
     public void move() {
-        double currentSpeed = getCurrentSpeed();
-        switch (direction) {
-            case UP:
-                y -= currentSpeed;
-                break;
-            case RIGHT:
-                x += currentSpeed;
-                break;
-            case DOWN:
-                y += currentSpeed;
-                break;
-            case LEFT:
-                x -= currentSpeed;
-                break;
+        if(!isLoaded) {
+            double currentSpeed = getCurrentSpeed();
+            switch (direction) {
+                case UP:
+                    y -= currentSpeed;
+                    break;
+                case RIGHT:
+                    x += currentSpeed;
+                    break;
+                case DOWN:
+                    y += currentSpeed;
+                    break;
+                case LEFT:
+                    x -= currentSpeed;
+                    break;
+            }
         }
     }
 

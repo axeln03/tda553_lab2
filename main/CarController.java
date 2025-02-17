@@ -26,18 +26,23 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Vehicle> cars = new ArrayList<>();
-
+    private Workshop<Volvo240> volvo240Workshop = new Workshop<>(40,"volvoWorkshop");
     //methods:
 
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
-        cc.cars.add(new Saab95());
+        cc.cars.add(new Volvo240());
+        cc.cars.add(new Volvo240());
 
+        int i = 0;
+        for(Vehicle car : cc.cars){
+            car.setY(i);
+            i += 100;
+        }
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -59,6 +64,7 @@ public class CarController {
                 frame.drawPanel.moveit(car, x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+                checkWorkshopCollision(car,x,y);
             }
         }
     }
@@ -80,6 +86,55 @@ public class CarController {
         }
     }
 
+    void stopAllCars() {
+        for (Vehicle car : cars
+        ) {
+            car.stopEngine();
+        }
+    }
+
+    void startAllCars() {
+        for (Vehicle car : cars
+        ) {
+            car.startEngine();
+        }
+    }
+
+    void turboOn() {
+        for (Vehicle car : cars) {
+            if(car instanceof Saab95) {
+                ((Saab95) car).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Vehicle car : cars) {
+            if(car instanceof Saab95) {
+                ((Saab95) car).setTurboOff();
+            }
+        }
+    }
+
+    void liftBed() {
+        for (Vehicle car : cars) {
+            if(car instanceof Scania) {
+                ((Scania) car).raiseRamp();
+            }
+        }
+    }
+
+    void lowerBed() {
+        for (Vehicle car : cars) {
+            if(car instanceof Truck) {
+                ((Scania) car).lowerRamp();
+            }
+        }
+    }
+
+
+
+
     void changeRuntimeDirection(Vehicle car) {
         if (car.getX() < 0) {
             car.setCurrentSpeed(0);
@@ -96,4 +151,15 @@ public class CarController {
         }
 
     }
+
+    void checkWorkshopCollision(Vehicle car,int x, int y){
+        if(x >= 300 && x<=400 && y <= 395 && y >= 300 && car instanceof Volvo240 && !car.getIsLoaded()){
+            car.stopEngine();
+            volvo240Workshop.load((Volvo240) car);
+            car.setLoaded(true);
+            System.out.println(volvo240Workshop.getStorage());
+        }
+    }
+
+
 }

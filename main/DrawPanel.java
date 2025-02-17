@@ -66,10 +66,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int i = 0;
         for (Vehicle car : pointHashMap.keySet()){
-            g.drawImage(imageHashMap.get(car.getClass().getSimpleName()), pointHashMap.get(car).x, pointHashMap.get(car).y+ i , null);
-            i += 100;
+            g.drawImage(imageHashMap.get(car.getClass().getSimpleName()), pointHashMap.get(car).x, pointHashMap.get(car).y , null);
         }
 
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);

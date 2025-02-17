@@ -28,6 +28,7 @@ public class Workshop<T> {
     public void load(T t) {
         if (storage.getCurrentSize() < getMaxCapacity()) {
             storage.loadOn(t);
+
         } else {
             throw new RuntimeException("The workshop is full!");
         }
