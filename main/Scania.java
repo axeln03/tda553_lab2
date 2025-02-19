@@ -42,8 +42,6 @@ public class Scania extends Truck implements RampFunction {
     public void lowerRamp() {
         if (getCurrentSpeed() == 0) {
             setBedAngle(Math.max(getCurrentBedAngle() - getBedSpeed(), 0));
-        } else {
-            throw new IllegalArgumentException("Can't lower bed while moving");
         }
     }
 
@@ -51,8 +49,6 @@ public class Scania extends Truck implements RampFunction {
     public void gas(double value) {
         if (getCurrentBedAngle() == 0) {
             super.gas(value);
-        } else {
-            throw new IllegalArgumentException("Can't move while bed i up.");
         }
     }
 

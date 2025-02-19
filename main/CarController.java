@@ -17,7 +17,7 @@ public class CarController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
+    private final int delay = 10;
     // The timer is started with a listener (see below) that executes the statements
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
@@ -36,7 +36,7 @@ public class CarController {
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
         cc.cars.add(new Volvo240());
-        cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
 
         int i = 0;
         for(Vehicle car : cc.cars){
@@ -121,14 +121,16 @@ public class CarController {
             if(car instanceof Scania) {
                 ((Scania) car).raiseRamp();
             }
+
         }
     }
 
     void lowerBed() {
         for (Vehicle car : cars) {
-            if(car instanceof Truck) {
+            if(car instanceof Scania) {
                 ((Scania) car).lowerRamp();
             }
+
         }
     }
 
@@ -137,17 +139,21 @@ public class CarController {
 
     void changeRuntimeDirection(Vehicle car) {
         if (car.getX() < 0) {
-            car.setCurrentSpeed(0);
+            car.stopEngine();
             car.setDirection(Direction.RIGHT);
+            car.startEngine();
         } else if (car.getX() > 700) {
-            car.setCurrentSpeed(0);
+            car.stopEngine();
             car.setDirection(Direction.LEFT);
+            car.startEngine();
         } else if (car.getY() < 0) {
-            car.setCurrentSpeed(0);
+            car.stopEngine();
             car.setDirection(Direction.DOWN);
+            car.startEngine();
         } else if (car.getY() > 500) {
-            car.setCurrentSpeed(0);
+            car.stopEngine();
             car.setDirection(Direction.UP);
+            car.startEngine();
         }
 
     }
