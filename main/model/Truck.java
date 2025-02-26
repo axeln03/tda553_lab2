@@ -14,4 +14,8 @@ public abstract class Truck extends Vehicle {
         return getEnginePower() * 0.01;
     }
 
+    public abstract void raiseRamp();
+    public abstract void lowerRamp();
+
+
 }
