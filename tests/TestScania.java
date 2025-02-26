@@ -1,5 +1,4 @@
-import main.Scania;
-import main.Truck;
+import main.model.Scania;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

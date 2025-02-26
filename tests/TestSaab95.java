@@ -1,6 +1,5 @@
-import main.*;
-
-
+import main.model.Direction;
+import main.model.Saab95;
 import org.junit.Test;
 
 import static java.awt.Color.black;

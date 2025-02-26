@@ -1,9 +1,9 @@
-import main.*;
+import main.model.CarTransport;
+import main.model.Saab95;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.awt.*;
-import java.util.Vector;
 
 public class TestCarTransport {
 

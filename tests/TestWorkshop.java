@@ -1,4 +1,4 @@
-import main.*;
+import main.model.*;
 import org.junit.Test;
 
 import java.awt.*;

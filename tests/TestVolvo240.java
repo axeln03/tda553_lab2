@@ -1,6 +1,7 @@
 
 
-import main.*;
+import main.model.Direction;
+import main.model.Volvo240;
 import org.junit.Test;
 
 import static java.awt.Color.*;
