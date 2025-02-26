@@ -1,5 +1,7 @@
-package main;
+package main.controller;
 
+
+import main.DrawPanel;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
