@@ -71,26 +71,6 @@ public class CarController {
     }
 
 
-    void changeRuntimeDirection(Vehicle car) {
-        if (car.getX() < 0) {
-            car.stopEngine();
-            car.setDirection(Direction.RIGHT);
-            car.startEngine();
-        } else if (car.getX() > 700) {
-            car.stopEngine();
-            car.setDirection(Direction.LEFT);
-            car.startEngine();
-        } else if (car.getY() < 0) {
-            car.stopEngine();
-            car.setDirection(Direction.DOWN);
-            car.startEngine();
-        } else if (car.getY() > 500) {
-            car.stopEngine();
-            car.setDirection(Direction.UP);
-            car.startEngine();
-        }
-
-    }
 
     void checkWorkshopCollision(Vehicle car,int x, int y){
         if(x >= 300 && x<=400 && y <= 395 && y >= 300 && car instanceof Volvo240 && !car.getIsLoaded()){

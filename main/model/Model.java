@@ -82,6 +82,31 @@ public class Model implements ControllerCallInterface {
         }
     }
 
+
+    void changeRuntimeDirection() {
+        for (Vehicle car: vehicles) {
+            if (car.getX() < 0) {
+                car.stopEngine();
+                car.setDirection(Direction.RIGHT);
+                car.startEngine();
+            } else if (car.getX() > 700) {
+                car.stopEngine();
+                car.setDirection(Direction.LEFT);
+                car.startEngine();
+            } else if (car.getY() < 0) {
+                car.stopEngine();
+                car.setDirection(Direction.DOWN);
+                car.startEngine();
+            } else if (car.getY() > 500) {
+                car.stopEngine();
+                car.setDirection(Direction.UP);
+                car.startEngine();
+            }
+        }
+
+    }
+
+
 }
 
 
