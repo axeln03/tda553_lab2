@@ -83,3 +83,6 @@ public class Model implements ControllerCallInterface {
     }
 
 }
+
+
+// Skapa update, collision med kant, collision med workshop
