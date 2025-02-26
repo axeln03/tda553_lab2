@@ -6,8 +6,8 @@ public class Volvo240 extends Car {
 
     private final static double trimFactor = 1.25;
 
-    public Volvo240() {
-        super(4, 100, Color.black, "Volvo240", 0, 0);
+    public Volvo240(int x, int y) {
+        super(4, 100, Color.black, "Volvo240", x, y);
     }
 
     @Override

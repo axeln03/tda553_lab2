@@ -8,8 +8,8 @@ public class Scania extends Truck implements RampFunction {
     private final double bedSpeed = 5;
 
 
-    public Scania() {
-        super(2, 200, Color.green, "Scania", 0, 0);
+    public Scania(int x, int y) {
+        super(2, 200, Color.green, "Scania", x, y);
         this.bedAngle = 0;
     }
 
