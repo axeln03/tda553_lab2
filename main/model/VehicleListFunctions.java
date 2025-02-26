@@ -82,4 +82,12 @@ public class VehicleListFunctions implements Iterable<Vehicle> {
             v.stopEngine();
         }
     }
+
+    int size() {
+        return vehicles.size();
+    }
+
+    Vehicle get(int i) {
+        return vehicles.get(i);
+    }
 }
