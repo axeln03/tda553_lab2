@@ -6,11 +6,14 @@ public class Workshop<T> {
     private int maxCapacity;
     String name;
     private Storage<T> storage;
-
-    public Workshop(int maxCapacity, String name) {
+    private double x;
+    private double y;
+    public Workshop(int maxCapacity, String name, double x, double y) {
         this.maxCapacity = maxCapacity;
         this.name = name;
         this.storage = new Storage<T>(maxCapacity);
+        this.x = x;
+        this.y = y;
     }
 
     public int getMaxCapacity() {
@@ -36,6 +39,22 @@ public class Workshop<T> {
 
     public T unloadIndex(int i) {
         return storage.removeIndex(i);
+    }
+
+    public void setX(double value) {
+        x = value;
+    }
+
+    public void setY(double value) {
+        y = value;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
 }
