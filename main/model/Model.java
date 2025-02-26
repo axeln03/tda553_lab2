@@ -2,14 +2,20 @@ package main.model;
 
 import java.util.*;
 import java.awt.*;
+import java.util.List;
 
 public class Model implements ControllerCallInterface {
     private VehicleListFunctions vehicles;
     private WorkshopList workshops;
+    private List<VehicleObserver> vehicleObservers;
+    private List<WorkshopObserver> workshopObservers;
+
 
     public Model() {
         this.vehicles = new VehicleListFunctions();
         this.workshops = new WorkshopList();
+        this.vehicleObservers = new ArrayList<>();
+        this.workshopObservers = new ArrayList<>();
     }
 
 
@@ -104,6 +110,27 @@ public class Model implements ControllerCallInterface {
             }
         }
 
+    }
+
+    //TODO Finish this up
+    public void updateVehicle() {
+        for(Vehicle car: vehicles){
+            car.move();
+            notifyVehicleObservers(car);
+        }
+    }
+
+    public void addVehicleObserver(VehicleObserver observer){
+        vehicleObservers.add(observer);
+    }
+    public void addWorkshopObserver(WorkshopObserver observer){
+        workshopObservers.add(observer);
+    }
+
+    private void notifyVehicleObservers(Vehicle car){
+        for(VehicleObserver observer: vehicleObservers){
+            observer.onVehicleUpdate(car);
+        }
     }
 
 
