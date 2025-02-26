@@ -1,4 +1,4 @@
-package main;
+package main.model;
 
 public interface RampFunction {
     void raiseRamp();

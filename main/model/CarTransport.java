@@ -1,6 +1,4 @@
-package main;
-
-import org.hamcrest.core.Is;
+package main.model;
 
 import java.awt.*;
 import java.util.Stack;

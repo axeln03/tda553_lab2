@@ -1,13 +1,13 @@
 package main;
 
+import main.model.Vehicle;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.nio.Buffer;
 import java.util.HashMap;
-import java.util.Objects;
 
 // This panel represents the animated part of the view with the car images.
 
