@@ -28,11 +28,6 @@ public class MainView extends JPanel implements VehicleObserver {
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300,300);
     Point point = new Point();
-    // TODO: Make this general for all cars
-    void moveit(Vehicle car, int x, int y){
-        Point point = new Point(x,y);
-        pointHashMap.put(car, point);
-    }
 
     @Override
     public void onVehicleUpdate(Vehicle car){

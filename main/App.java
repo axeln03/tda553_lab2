@@ -20,6 +20,7 @@ public class App {
         MainView view = new MainView(800,800);
         model.addVehicleObserver(view);
         model.addCar(new Saab95(0,0));
+
         CarFrame frame = new CarFrame("CarFrame 2.0", view);
         CarController cc = new CarController(model, frame);
         timer.start();

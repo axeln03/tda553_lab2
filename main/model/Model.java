@@ -24,11 +24,6 @@ public class Model implements ControllerCallInterface {
 
     }
 
-    public class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            updateVehicle();
-        }
-    }
 
     // dessa 2 funktioner lägger till bilar utan controller
 
@@ -137,6 +132,7 @@ public class Model implements ControllerCallInterface {
     public void updateVehicle() {
         for(Vehicle car: vehicles){
             car.move();
+            changeRuntimeDirection();
             notifyVehicleObservers(car);
         }
     }
@@ -156,6 +152,5 @@ public class Model implements ControllerCallInterface {
 
 
 }
-
 
 // Skapa update, collision med kant, collision med workshop
