@@ -1,4 +1,4 @@
-package main;
+package main.view;
 
 import main.model.Vehicle;
 
@@ -38,26 +38,6 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         // Print an error message in case file is not found with a try/catch block
-        try {
-            // You can remove the "pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-            // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-            // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-
-            imageHashMap.put("Volvo240", volvoImage);
-            imageHashMap.put("Saab95", saabImage);
-            imageHashMap.put("Scania", scaniaImage);
-
-            volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
 
     }
 
