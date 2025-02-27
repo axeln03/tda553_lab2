@@ -1,5 +1,8 @@
+
 import main.model.CarTransport;
 import main.model.Saab95;
+
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -8,7 +11,7 @@ import java.awt.*;
 public class TestCarTransport {
 
     CarTransport carTransport = new CarTransport(2, 100,Color.green, "Mercedes", 0, 0);
-    Saab95 saab = new Saab95();
+    Saab95 saab = new Saab95(0,0);
 
 
 

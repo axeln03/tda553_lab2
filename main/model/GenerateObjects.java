@@ -1,6 +1,7 @@
 package main.model;
 
 import java.awt.*;
+import main.model.Vehicle.*;
 
 public class GenerateObjects {
     public Car createSaab95(int x, int y) {

@@ -1,11 +1,11 @@
-import main.model.Scania;
+import main.model.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
 
 public class TestScania {
-    Scania scania = new Scania();
+    Scania scania = new Scania(0,0);
 
     @Test
     public void testBedLimits(){

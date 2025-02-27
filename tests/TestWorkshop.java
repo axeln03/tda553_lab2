@@ -6,13 +6,13 @@ import java.awt.*;
 import static org.junit.Assert.*;
 
 public class TestWorkshop {
-    Workshop<Volvo240> workshopVolvo = new Workshop<>(40,"VolvoWorkshop");
-    Workshop<Vehicle> workshop = new Workshop<>(2, "Workshop");
-    Workshop<Vehicle> workshopVehicle = new Workshop<>(3, "WorkshopV");
+    Workshop<Volvo240> workshopVolvo = new Workshop<>(40,"VolvoWorkshop",0,0);
+    Workshop<Vehicle> workshop = new Workshop<>(2, "Workshop",0,0);
+    Workshop<Vehicle> workshopVehicle = new Workshop<>(3, "WorkshopV",0,0);
     CarTransport carTransport = new CarTransport(2,100, Color.black,"transport",0,0);
-    Volvo240 volvo = new Volvo240();
-    Volvo240 volvo2 = new Volvo240();
-    Saab95 saab95 = new Saab95();
+    Volvo240 volvo = new Volvo240(0,1);
+    Volvo240 volvo2 = new Volvo240(100,11);
+    Saab95 saab95 = new Saab95(0,0);
 
 
 

@@ -1,7 +1,6 @@
 
+import main.model.*;
 
-import main.model.Direction;
-import main.model.Volvo240;
 import org.junit.Test;
 
 import static java.awt.Color.*;
@@ -9,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TestVolvo240 {
 
-    Volvo240 volvo = new Volvo240();
+    Volvo240 volvo = new Volvo240(0,0);
 
 
     @Test

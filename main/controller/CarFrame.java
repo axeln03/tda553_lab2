@@ -18,7 +18,7 @@ public class CarFrame extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
-
+    private MainView mainView;
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -40,7 +40,8 @@ public class CarFrame extends JFrame{
     JButton removeCarButton = new JButton("Remove a car");
 
     // Constructor
-    public CarFrame(String framename, CarController cc){
+    public CarFrame(String framename, MainView mainView){
+        this.mainView = mainView;
         initComponents(framename);
     }
 
@@ -51,7 +52,6 @@ public class CarFrame extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -59,11 +59,11 @@ public class CarFrame extends JFrame{
                         1);//step
         gasSpinner = new JSpinner(spinnerModel);
 
+        this.add(mainView,BorderLayout.CENTER);
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-
         this.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2,4));

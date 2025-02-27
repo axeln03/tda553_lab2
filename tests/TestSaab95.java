@@ -1,5 +1,5 @@
-import main.model.Direction;
-import main.model.Saab95;
+import main.model.*;
+
 import org.junit.Test;
 
 import static java.awt.Color.black;
@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TestSaab95 {
 
-    Saab95 saab = new Saab95();
+    Saab95 saab = new Saab95(0,0);
 
     @Test
     public void testTurbo() {

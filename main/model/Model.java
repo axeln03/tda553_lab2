@@ -1,8 +1,12 @@
 package main.model;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Timer;
 
 public class Model implements ControllerCallInterface {
     private VehicleListFunctions vehicles;
@@ -16,17 +20,30 @@ public class Model implements ControllerCallInterface {
         this.workshops = new WorkshopList();
         this.vehicleObservers = new ArrayList<>();
         this.workshopObservers = new ArrayList<>();
+
+
     }
 
+    public class TimerListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            updateVehicle();
+        }
+    }
 
     // dessa 2 funktioner lägger till bilar utan controller
+
     public void addCar(Car car) {
         vehicles.addVehicle(car);
+        notifyVehicleObservers(car);
     }
 
     public void removeCar(Car car) {
         vehicles.removeVehicle(car);
+        notifyVehicleObservers(car);
+
     }
+
+
 
 
     // controller
@@ -35,6 +52,7 @@ public class Model implements ControllerCallInterface {
         for (Vehicle car : vehicles
         ) {
             car.gas(gas);
+            System.out.println(car.getCurrentSpeed());
         }
     }
 
@@ -75,8 +93,9 @@ public class Model implements ControllerCallInterface {
 
     public void addCar() {
         if (vehicles.size() < 6) {
-            Car saab = GenerateObjects.createVolvo250(0, vehicles.size() * 100);
-            vehicles.addVehicle(saab);
+            Car volvo240 = GenerateObjects.createVolvo250(0, vehicles.size() * 100);
+            vehicles.addVehicle(volvo240);
+            notifyVehicleObservers(volvo240);
         }
     }
 
@@ -85,6 +104,8 @@ public class Model implements ControllerCallInterface {
             int index = vehicles.size();
             Vehicle car = vehicles.get(index);
             vehicles.removeVehicle(car);
+            notifyVehicleObservers(car);
+
         }
     }
 
