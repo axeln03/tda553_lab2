@@ -31,7 +31,14 @@ public class MainView extends JPanel implements VehicleObserver {
 
     @Override
     public void onVehicleUpdate(Vehicle car){
+
         pointHashMap.put(car, new Point((int) car.getX(),(int) car.getY()));
+        repaint();
+    }
+
+    @Override
+    public void onVehicleRemoval(Vehicle car){
+        pointHashMap.remove(car);
         repaint();
     }
 

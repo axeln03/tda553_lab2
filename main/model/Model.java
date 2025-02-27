@@ -96,10 +96,10 @@ public class Model implements ControllerCallInterface {
 
     public void removeCar() {
         if (vehicles.size() > 0) {
-            int index = vehicles.size();
+            int index = vehicles.size() - 1;
             Vehicle car = vehicles.get(index);
             vehicles.removeVehicle(car);
-            notifyVehicleObservers(car);
+            notifyVehicleObserversRemoval(car);
 
         }
     }
@@ -149,6 +149,12 @@ public class Model implements ControllerCallInterface {
             observer.onVehicleUpdate(car);
         }
     }
+    private void notifyVehicleObserversRemoval(Vehicle car){
+        for(VehicleObserver observer: vehicleObservers){
+            observer.onVehicleRemoval(car);
+        }
+    }
+
 
 
 }
