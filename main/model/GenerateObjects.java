@@ -4,7 +4,7 @@ import java.awt.*;
 import main.model.Vehicle.*;
 
 public class GenerateObjects {
-    public Car createSaab95(int x, int y) {
+    public static Car createSaab95(int x, int y) {
         return new Saab95(x, y);
     }
 

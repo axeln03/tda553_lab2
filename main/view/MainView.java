@@ -19,6 +19,7 @@ public class MainView extends JPanel implements VehicleObserver, WorkshopObserve
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
+    BufferedImage volvoWorkshopImage;
 
 
     HashMap<String, BufferedImage> imageHashMap = new HashMap<String, BufferedImage>();
@@ -28,8 +29,6 @@ public class MainView extends JPanel implements VehicleObserver, WorkshopObserve
 
     //HashMap
     // To keep track of a single car's position
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
 
     @Override
     public void onVehicleUpdate(Vehicle car){

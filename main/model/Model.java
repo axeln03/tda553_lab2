@@ -90,10 +90,20 @@ public class Model implements ControllerCallInterface {
     }
 
     public void addCar() {
-        if (vehicles.size() < 6) {
+        if (vehicles.size() % 3 == 0) {
             Car volvo240 = GenerateObjects.createVolvo250(0, vehicles.size() * 100);
             vehicles.addVehicle(volvo240);
             notifyVehicleObservers(volvo240);
+        }
+        else if (vehicles.size() % 3 == 1) {
+            Car saab95 = GenerateObjects.createSaab95(0, vehicles.size() * 100);
+            vehicles.addVehicle(saab95);
+            notifyVehicleObservers(saab95);
+        }
+        else {
+            Truck scania = GenerateObjects.createScania(0, vehicles.size() * 100);
+            vehicles.addVehicle(scania);
+            notifyVehicleObservers(scania);
         }
     }
 
