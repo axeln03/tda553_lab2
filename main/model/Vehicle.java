@@ -13,6 +13,8 @@ public abstract class Vehicle implements Movable {
     private double y;
     private Direction direction;
     private boolean isLoaded = false;
+    private boolean engineState = false;
+    private double oldSpeed = 0;
 
 
     public Vehicle(int nrDoors, double enginePower, Color color, String modelName, int x, int y) {
@@ -75,11 +77,18 @@ public abstract class Vehicle implements Movable {
     }
 
     public void startEngine() {
-        currentSpeed = 0.1;
+        if (!engineState) {
+            engineState = true;
+            setCurrentSpeed(oldSpeed);
+        }
     }
 
     public void stopEngine() {
-        currentSpeed = 0;
+        if (engineState){
+            oldSpeed = getCurrentSpeed();
+            engineState = false;
+            setCurrentSpeed(0);
+        }
     }
 
     public abstract double speedFactor();
@@ -96,7 +105,7 @@ public abstract class Vehicle implements Movable {
 
 
     public void gas(double amount) {
-        if (amount >= 0 && amount <= 1) {
+        if (amount >= 0 && amount <= 1 && engineState) {
             incrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("amount out of range 0 to 1");
@@ -106,7 +115,7 @@ public abstract class Vehicle implements Movable {
 
     public void brake(double amount) {
 
-        if (amount >= 0 && amount <= 1) {
+        if (amount >= 0 && amount <= 1 && engineState) {
             decrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("amount out of range 0 to 1");
