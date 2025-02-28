@@ -1,5 +1,5 @@
 package main.model;
 
 public interface WorkshopObserver {
-    void onWorkshopUpdate();
+    void onWorkshopUpdate(Workshop<?> workshop);
 }

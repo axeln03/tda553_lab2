@@ -1,8 +1,7 @@
 package main.view;
 
 import com.sun.tools.javac.Main;
-import main.model.Vehicle;
-import main.model.VehicleObserver;
+import main.model.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,10 +9,11 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 // This panel represents the animated part of the view with the car images.
 
-public class MainView extends JPanel implements VehicleObserver {
+public class MainView extends JPanel implements VehicleObserver, WorkshopObserver {
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -22,25 +22,32 @@ public class MainView extends JPanel implements VehicleObserver {
 
 
     HashMap<String, BufferedImage> imageHashMap = new HashMap<String, BufferedImage>();
-    HashMap<Vehicle, Point> pointHashMap = new HashMap<>();
+    HashMap<Vehicle, Point> vehiclePointHashMap = new HashMap<>();
+    HashMap<Workshop<?>, Point> workshopPointHashMap = new HashMap<>();
+
+
     //HashMap
     // To keep track of a single car's position
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300,300);
-    Point point = new Point();
 
     @Override
     public void onVehicleUpdate(Vehicle car){
-
-        pointHashMap.put(car, new Point((int) car.getX(),(int) car.getY()));
+        vehiclePointHashMap.put(car, new Point((int) car.getX(),(int) car.getY()));
         repaint();
     }
 
     @Override
     public void onVehicleRemoval(Vehicle car){
-        pointHashMap.remove(car);
+        vehiclePointHashMap.remove(car);
         repaint();
     }
+
+    @Override
+    public void onWorkshopUpdate(Workshop<?> workshop){
+        workshopPointHashMap.put(workshop, new Point((int) workshop.getX(), (int) workshop.getY()));
+        repaint();
+        }
 
     // Initializes the panel and reads the images
     public MainView(int x, int y) {
@@ -71,14 +78,18 @@ public class MainView extends JPanel implements VehicleObserver {
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.s
+    // TODO: Change to suit your needs.s Change so workshop works the same as vehicles
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Vehicle car : pointHashMap.keySet()){
-            g.drawImage(imageHashMap.get(car.getClass().getSimpleName()), pointHashMap.get(car).x, pointHashMap.get(car).y , null);
+        for (Vehicle car : vehiclePointHashMap.keySet()){
+            g.drawImage(imageHashMap.get(car.getClass().getSimpleName()), vehiclePointHashMap.get(car).x, vehiclePointHashMap.get(car).y , null);
         }
 
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+        for(Workshop<?> workshop : workshopPointHashMap.keySet()) {
+            g.drawImage(volvoWorkshopImage, workshopPointHashMap.get(workshop).x, workshopPointHashMap.get(workshop).y, null);
+        }
     }
+
+
 }

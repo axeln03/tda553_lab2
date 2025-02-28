@@ -38,7 +38,10 @@ public class Model implements ControllerCallInterface {
 
     }
 
-
+    public void addWorkshop(Workshop<? extends Car> workshop){
+        workshops.addWorkshop(workshop);
+        notifyWorkshopObservers(workshop);
+    }
 
 
     // controller
@@ -106,7 +109,7 @@ public class Model implements ControllerCallInterface {
 
 
     void changeRuntimeDirection() {
-        for (Vehicle car: vehicles) {
+        for (Vehicle car : vehicles) {
             if (car.getX() < 0) {
                 car.stopEngine();
                 car.setDirection(Direction.RIGHT);
@@ -130,33 +133,39 @@ public class Model implements ControllerCallInterface {
 
     //TODO Finish this up
     public void updateVehicle() {
-        for(Vehicle car: vehicles){
+        for (Vehicle car : vehicles) {
             car.move();
             changeRuntimeDirection();
             notifyVehicleObservers(car);
         }
     }
 
-    public void addVehicleObserver(VehicleObserver observer){
+    public void addVehicleObserver(VehicleObserver observer) {
         vehicleObservers.add(observer);
     }
-    public void addWorkshopObserver(WorkshopObserver observer){
+
+    public void addWorkshopObserver(WorkshopObserver observer) {
         workshopObservers.add(observer);
     }
 
-    private void notifyVehicleObservers(Vehicle car){
-        for(VehicleObserver observer: vehicleObservers){
+    private void notifyVehicleObservers(Vehicle car) {
+        for (VehicleObserver observer : vehicleObservers) {
             observer.onVehicleUpdate(car);
         }
     }
-    private void notifyVehicleObserversRemoval(Vehicle car){
-        for(VehicleObserver observer: vehicleObservers){
+
+    private void notifyWorkshopObservers(Workshop<?> workshop) {
+        for (WorkshopObserver observer : workshopObservers) {
+            observer.onWorkshopUpdate(workshop);
+        }
+    }
+
+    private void notifyVehicleObserversRemoval(Vehicle car) {
+        for (VehicleObserver observer : vehicleObservers) {
             observer.onVehicleRemoval(car);
         }
     }
 
 
-
 }
-
 // Skapa update, collision med kant, collision med workshop

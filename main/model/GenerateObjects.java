@@ -21,6 +21,7 @@ public class GenerateObjects {
     }
 
     public static Workshop<Saab95> createSaab95Workshop(int maxCapacity, String name, double x, double y){
+
         return new Workshop<Saab95>(maxCapacity, name, x, y);
     }
 
