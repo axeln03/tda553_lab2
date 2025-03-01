@@ -38,7 +38,7 @@ public class Model implements ControllerCallInterface {
 
     }
 
-    public void addWorkshop(Workshop<? extends Car> workshop){
+    public void addWorkshop(Workshop<? extends Vehicle> workshop){
         workshops.addWorkshop(workshop);
         notifyWorkshopObservers(workshop);
     }
@@ -144,6 +144,7 @@ public class Model implements ControllerCallInterface {
     //TODO Finish this up
     public void updateVehicle() {
         for (Vehicle car : vehicles) {
+            workshopCollision();
             car.move();
             changeRuntimeDirection();
             notifyVehicleObservers(car);
@@ -176,6 +177,29 @@ public class Model implements ControllerCallInterface {
         }
     }
 
+    private void workshopCollision(){
+        for(Vehicle car : vehicles){
+            for(Workshop<? extends Vehicle> workshop : workshops){
+                //System.out.println(workshop.getX(), car.get);
+                if(workshop.getName().contains(car.getModelName()) && !car.getIsLoaded() && collisionDistance(car, workshop)){
+                    car.stopEngine();
+                    car.setX(workshop.getX());
+                    car.setY(workshop.getY());
+                    loadIntoWorkshop(workshop, car);
+                }
+            }
+        }
+    }
+
+    private boolean collisionDistance(Vehicle car, Workshop<?> workshop ){
+        return (Math.abs(car.getX() - workshop.getX()) <= 10 && Math.abs(car.getY() - workshop.getY()) <= 10);
+    }
+
+    //Helper to load correctly
+    private<T extends Vehicle> void loadIntoWorkshop(Workshop<T> workshop, Vehicle car){
+        workshop.load((T) car);
+        car.setLoaded(true);
+    }
+
 
 }
-// Skapa update, collision med kant, collision med workshop

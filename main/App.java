@@ -24,7 +24,9 @@ public class App {
         model.addWorkshopObserver(view);
 
         model.addCar(new Saab95(0,0));
-        model.addWorkshop(new Workshop<Volvo240>(10,"VolvoWorkshop",300,300));
+        model.addWorkshop(new Workshop<Volvo240>(10,"Volvo240Workshop",300,300));
+        model.addWorkshop(new Workshop<Volvo240>(10,"Saab95Workshop",200,100));
+
 
         CarFrame frame = new CarFrame("CarFrame 2.0", view);
         CarController cc = new CarController(model, frame);

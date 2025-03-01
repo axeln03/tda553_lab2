@@ -108,7 +108,7 @@ public abstract class Vehicle implements Movable {
         if (amount >= 0 && amount <= 1 && engineState) {
             incrementSpeed(amount);
         } else {
-            throw new IllegalArgumentException("amount out of range 0 to 1");
+            throw new IllegalArgumentException("amount out of range 0 to 1 / Engine is not on");
         }
     }
 
