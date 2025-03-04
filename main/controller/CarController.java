@@ -2,6 +2,7 @@ package main.controller;
 
 
 import main.model.*;
+import main.view.*;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -17,87 +18,86 @@ import java.awt.event.ActionListener;
 
 public class CarController {
 
-    CarFrame frame;
     Model model;
+    ControlPanel controlPanel;
 
-    public CarController(Model model, CarFrame frame) {
+    public CarController(Model model, ControlPanel controlPanel) {
         this.model = model;
-        this.frame = frame;
+        this.controlPanel = controlPanel;
         activeButtons();
     }
 
 
     public void activeButtons() {
-        frame.gasSpinner.addChangeListener(new ChangeListener() {
+        controlPanel.gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-
-                frame.gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                controlPanel.gasAmount = (int) ((JSpinner)e.getSource()).getValue();
             }
         });
-        frame.gasButton.addActionListener(new ActionListener() {
+        controlPanel.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.gas(frame.gasAmount);
+                model.gas(controlPanel.gasAmount);
             }
         });
 
-        frame.brakeButton.addActionListener(new ActionListener() {
+        controlPanel.brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.brake(frame.gasAmount);
+                model.brake(controlPanel.gasAmount);
             }
         });
 
-        frame.stopButton.addActionListener(new ActionListener() {
+        controlPanel.stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.stopAllCars();
             }
         });
 
-        frame.startButton.addActionListener(new ActionListener() {
+        controlPanel.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.startAllCars();
             }
         });
 
-        frame.turboOnButton.addActionListener(new ActionListener() {
+        controlPanel.turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.turboOn();
             }
         });
 
-        frame.turboOffButton.addActionListener(new ActionListener() {
+        controlPanel.turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.turboOff();
             }
         });
 
-        frame.lowerBedButton.addActionListener(new ActionListener() {
+        controlPanel.lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.lowerBed();
             }
         });
 
-        frame.liftBedButton.addActionListener(new ActionListener() {
+        controlPanel.liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.raiseBed();
             }
         });
 
-        frame.addCarButton.addActionListener(new ActionListener() {
+        controlPanel.addCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.addCar();
             }
         });
 
-        frame.removeCarButton.addActionListener(new ActionListener() {
+        controlPanel.removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.removeCar();

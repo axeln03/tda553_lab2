@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.Timer;
 
-public class Model implements ControllerCallInterface {
+public class Model {
     private VehicleListFunctions vehicles;
     private WorkshopList workshops;
     private List<VehicleObserver> vehicleObservers;
@@ -20,8 +20,6 @@ public class Model implements ControllerCallInterface {
         this.workshops = new WorkshopList();
         this.vehicleObservers = new ArrayList<>();
         this.workshopObservers = new ArrayList<>();
-
-
     }
 
 
@@ -31,6 +29,8 @@ public class Model implements ControllerCallInterface {
         vehicles.addVehicle(car);
         notifyVehicleObservers(car);
     }
+
+
 
     public void removeCar(Car car) {
         vehicles.removeVehicle(car);
@@ -96,6 +96,7 @@ public class Model implements ControllerCallInterface {
             vehicles.addVehicle(scania);
             notifyVehicleObservers(scania);
         }
+
     }
 
     public void removeCar() {
@@ -168,16 +169,16 @@ public class Model implements ControllerCallInterface {
         }
     }
 
-    private void workshopCollision(){
+    public void workshopCollision(){
         for(Vehicle car : vehicles){
             for(Workshop<? extends Vehicle> workshop : workshops){
-                //System.out.println(workshop.getX(), car.get);
                 if(workshop.getName().contains(car.getModelName()) && !car.getIsLoaded() && collisionDistance(car, workshop)){
                     car.stopEngine();
                     car.setX(workshop.getX());
                     car.setY(workshop.getY());
                     loadIntoWorkshop(workshop, car);
                 }
+
             }
         }
     }

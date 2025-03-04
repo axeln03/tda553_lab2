@@ -1,6 +1,5 @@
 package main.view;
 
-import com.sun.tools.javac.Main;
 import main.model.*;
 
 import java.awt.*;
@@ -9,11 +8,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Objects;
 
 // This panel represents the animated part of the view with the car images.
 
-public class MainView extends JPanel implements VehicleObserver, WorkshopObserver {
+public class GameView extends JPanel implements VehicleObserver, WorkshopObserver {
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -49,7 +47,7 @@ public class MainView extends JPanel implements VehicleObserver, WorkshopObserve
         }
 
     // Initializes the panel and reads the images
-    public MainView(int x, int y) {
+    public GameView(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y-240));
         this.setBackground(Color.green);
@@ -61,15 +59,15 @@ public class MainView extends JPanel implements VehicleObserver, WorkshopObserve
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(MainView.class.getResourceAsStream("pics/Volvo240.jpg"));
-            saabImage = ImageIO.read(MainView.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(MainView.class.getResourceAsStream("pics/Scania.jpg"));
+            volvoImage = ImageIO.read(GameView.class.getResourceAsStream("pics/Volvo240.jpg"));
+            saabImage = ImageIO.read(GameView.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(GameView.class.getResourceAsStream("pics/Scania.jpg"));
 
             imageHashMap.put("Volvo240", volvoImage);
             imageHashMap.put("Saab95", saabImage);
             imageHashMap.put("Scania", scaniaImage);
 
-            volvoWorkshopImage = ImageIO.read(MainView.class.getResourceAsStream("pics/VolvoBrand.jpg"));
+            volvoWorkshopImage = ImageIO.read(GameView.class.getResourceAsStream("pics/VolvoBrand.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
