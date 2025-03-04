@@ -91,6 +91,10 @@ public abstract class Vehicle implements Movable {
         }
     }
 
+    public double getOldSpeed() {
+        return oldSpeed;
+    }
+
     public abstract double speedFactor();
 
     private void incrementSpeed(double amount) {

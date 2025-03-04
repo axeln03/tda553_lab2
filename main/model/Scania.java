@@ -31,7 +31,7 @@ public class Scania extends Truck implements RampFunction {
 
     @Override
     public void raiseRamp() {
-        if (getCurrentSpeed() == 0) {
+        if (getCurrentSpeed() == 0 && this.getOldSpeed() == 0) {
             setBedAngle(Math.min(getCurrentBedAngle() + getBedSpeed(), 70));
         } else {
             throw new IllegalArgumentException("Can't raise bed while moving");
@@ -51,5 +51,4 @@ public class Scania extends Truck implements RampFunction {
             super.gas(value);
         }
     }
-
 }
