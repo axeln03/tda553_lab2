@@ -110,6 +110,7 @@ public abstract class Vehicle implements Movable {
 
     public void gas(double amount) {
         if (amount >= 0 && amount <= 1 && engineState) {
+            oldSpeed = getCurrentSpeed();
             incrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("amount out of range 0 to 1 / Engine is not on");
@@ -120,6 +121,7 @@ public abstract class Vehicle implements Movable {
     public void brake(double amount) {
 
         if (amount >= 0 && amount <= 1 && engineState) {
+            oldSpeed = getCurrentSpeed();
             decrementSpeed(amount);
         } else {
             throw new IllegalArgumentException("amount out of range 0 to 1");
