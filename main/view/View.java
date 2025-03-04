@@ -35,6 +35,7 @@ public class View extends JFrame{
 
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
+        this.setResizable(false);
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(gameView,BorderLayout.CENTER);
