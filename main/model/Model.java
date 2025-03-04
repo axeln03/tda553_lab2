@@ -47,26 +47,17 @@ public class Model implements ControllerCallInterface {
     // controller
     public void gas(double amount) {
         double gas = amount / 100;
-        for (Vehicle car : vehicles
-        ) {
-            car.gas(gas);
-            System.out.println(car.getCurrentSpeed());
-        }
+        vehicles.gas(gas);
+
     }
 
     public void brake(double amount) {
         double brake = amount / 100;
-        for (Vehicle car : vehicles
-        ) {
-            car.brake(brake);
-        }
+        vehicles.brake(brake);
     }
 
     public void stopAllCars() {
-        for (Vehicle car : vehicles
-        ) {
-            car.stopEngine();
-        }
+       vehicles.stopAllCars();
     }
 
     public void startAllCars() {
@@ -118,7 +109,7 @@ public class Model implements ControllerCallInterface {
     }
 
 
-    void changeRuntimeDirection() {
+    private void changeRuntimeDirection() {
         for (Vehicle car : vehicles) {
             if (car.getX() < 0) {
                 car.stopEngine();
